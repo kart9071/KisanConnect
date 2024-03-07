@@ -1,0 +1,40 @@
+.navbar-brand{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.navbar-nav {
+    margin-left: 450px;
+    position: relative;
+}
+
+
+.d-flex {
+    position: absolute;
+    margin-left: 100px;
+    width: 350px;
+}
+
+.search-container {
+    position: relative;
+  }
+  
+  .search-input {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  
+  .search-btn {
+    border-top-left-radius: 50%;
+    border-bottom-left-radius:50%;
+    border-top-right-radius: 50%;
+    border-bottom-right-radius: 50%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 2.5em; 
+    background-image: url("/images/searcch.png");
+    background-size: cover
+  }
+  
