@@ -16,6 +16,7 @@ export class ResetpasswordComponent implements OnInit {
   }
   user = new Login();
   confirmPassword='';
+  Otp ='';
   
   resetPassword(): void {
     if(this.user.password !== this.confirmPassword){
