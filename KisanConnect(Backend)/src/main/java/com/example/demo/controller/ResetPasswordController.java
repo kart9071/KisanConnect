@@ -21,22 +21,27 @@ import com.example.demo.service.EmailService;
 public class ResetPasswordController {
 	@Autowired
 	private EmailService emailService;
-//	@PostMapping("/resetPassword")
-//	@CrossOrigin(origins="http://localhost:4200")
-	@GetMapping("/resetpassword")
-	public void  resetPassword() throws Exception{
-//		String email=user.getEmail();
-//		String password=user.getPassword();
+	@PostMapping("/resetpassword")
+	@CrossOrigin(origins="http://localhost:4200")
+	public void  resetPassword(@RequestBody RegisterLogin user) throws Exception{
+		String email=user.getEmail();
+		String password=user.getPassword();
 		Random random = new Random();
 		int randomNumber = random.nextInt(9000) + 1000;
-        String toEmail = "karthikshetty200313@gmail.com"; // Replace with the recipient's email address
-        String subject = "Your Random Number";
-        String body = "Your random number is: " + randomNumber;
+//        String toEmail = "karthikshetty200313@gmail.com"; // Replace with the recipient's email address
+		System.out.println("your password is: "+password);
+        String subject = "Thanl you for the request to change password Here is your OTP, Don't send this OTP to anyone";
+        String body = "YOUR ONE TIME PASSWORD IS " + randomNumber;
         try {
-            emailService.sendEmail(toEmail, subject, body);
+            emailService.sendEmail(email, subject, body);
             System.out.println("Email sent successfully!");
         } catch (MessagingException e) {
             System.out.println("Failed to send email: " + e.getMessage());
         }
 	}
+//	@PostMapping("/resetpassword/otp")
+//	@CrossOrigin(origins="http://localhost:4200")
+//	public void otpController(int randomNumner,@RequestBody Object user) {
+//		
+//	}
 }
