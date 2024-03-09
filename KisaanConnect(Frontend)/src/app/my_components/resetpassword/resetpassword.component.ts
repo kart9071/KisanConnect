@@ -21,6 +21,7 @@ export class ResetpasswordComponent implements OnInit {
   resetPassword(): void {
     if(this.user.password !== this.confirmPassword){
       console.log("check the password")
+      window.alert("please match the password");
       return;
     }
     this._resetpasswordservice.resetPassword(this.user).subscribe(
