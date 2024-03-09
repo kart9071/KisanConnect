@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
 
           if(data.id){
             window.alert("login sussessfull....!");
-            this._router.navigate(['/']);
+            this._router.navigate(['']);
            } else
            {
             window.alert("Sorry! You are not Approved !!!");
@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
 
           console.log(data);
           console.log("Response Received");
-          sessionStorage.setItem('USER', "user");
+          
         },
         (error: { error: any; }) => {
           console.log(error.error);

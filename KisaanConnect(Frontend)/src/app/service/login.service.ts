@@ -19,8 +19,6 @@ export class LoginService {
     return this._Http.post<any>(`${NAV_URL}/loginuser`, login).pipe(
       map(
         data => {
-          sessionStorage.setItem('USER', login.username);
-          sessionStorage.setItem('TOKEN', `Bearer ${data.token}`);
           return data;
         }
       )

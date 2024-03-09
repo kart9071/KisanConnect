@@ -5,8 +5,8 @@
 
         <form (ngSubmit)="loginUser()">
             <div class="mb-3">
-                <label for="username" class="form-label">Username:</label>
-                <input type="text" class="form-control" id="username" name="username" [(ngModel)]="user.username" required>
+                <label for="email" class="form-label">Email:</label>
+                <input type="email" class="form-control" id="email" name="email" [(ngModel)]="user.email" required>
             </div>
 
             <div class="mb-3">
@@ -23,7 +23,7 @@
             </div>
 
             <div class="text-center mt-3">
-                <p>Forgot Password? <a routerLink="/resetPassword">Reset Password</a></p>
+                <p>Forgot Password? <a routerLink="/resetpassword">Reset Password</a></p>
             </div>
         </form>
     </div>
