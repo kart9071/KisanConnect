@@ -16,32 +16,64 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.model.RegisterLogin;
 import com.example.demo.service.EmailService;
+import com.example.demo.service.RegisterLoginService;
+
 
 @RestController
 public class ResetPasswordController {
 	@Autowired
 	private EmailService emailService;
-	@PostMapping("/resetpassword")
+	
+	@Autowired
+	private RegisterLoginService registerloginservice;
+	
+	@PostMapping("/api/send-otp")
 	@CrossOrigin(origins="http://localhost:4200")
-	public void  resetPassword(@RequestBody RegisterLogin user) throws Exception{
+	public void  sendOtp(@RequestBody RegisterLogin user) throws Exception{
+		int otp=generateOtp();
+        sendOtpByEmail(otp,user);
+	}
+	
+	@PostMapping("/api/verify-otp")
+	@CrossOrigin(origins="http://localhost:4200")
+	public void verifyOtp() {
+		
+	}
+	
+	public int generateOtp() {
+		Random random = new Random();
+		int otp=random.nextInt(9000)+1000;
+		return otp;
+	}
+	
+	public void sendOtpByEmail(int otp,RegisterLogin user) {
 		String email=user.getEmail();
 		String password=user.getPassword();
-		Random random = new Random();
-		int randomNumber = random.nextInt(9000) + 1000;
-//        String toEmail = "karthikshetty200313@gmail.com"; // Replace with the recipient's email address
-		System.out.println("your password is: "+password);
-        String subject = "Thanl you for the request to change password Here is your OTP, Don't send this OTP to anyone";
-        String body = "YOUR ONE TIME PASSWORD IS " + randomNumber;
-        try {
-            emailService.sendEmail(email, subject, body);
-            System.out.println("Email sent successfully!");
-        } catch (MessagingException e) {
-            System.out.println("Failed to send email: " + e.getMessage());
-        }
+		boolean check=emailPresent(email,password);
+		if(check) {
+			String subject = "Thank you for the request to change password Here is your OTP, Don't send this OTP to anyone";
+	        String body = "YOUR ONE TIME PASSWORD IS " + otp;
+	        try {
+	            emailService.sendEmail(email, subject, body);
+	            System.out.println("Email sent successfully!");
+	        } catch (MessagingException e) {
+	            System.out.println("Failed to send email: " + e.getMessage());
+	        }
+		}
+		else {
+			System.out.println("Email is not present...");
+		}
 	}
-//	@PostMapping("/resetpassword/otp")
-//	@CrossOrigin(origins="http://localhost:4200")
-//	public void otpController(int randomNumner,@RequestBody Object user) {
-//		
-//	}
+	
+	public boolean emailPresent(String email,String password) {
+		boolean check;
+		RegisterLogin user=registerloginservice.getUsernameByEmail(email);
+		if(user!=null && user.getEmail().equals(email) ) {
+			check=true;
+		}
+		else {
+			check=false;
+		}
+		return check;
+	}
 }
