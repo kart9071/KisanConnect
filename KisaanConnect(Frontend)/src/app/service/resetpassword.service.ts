@@ -14,6 +14,11 @@ export class ResetpasswordService {
 
   resetPassword(user :Login): Observable<any> {
     console.log(user)
-    return this._Http.post(`${NAV_URL}/resetpassword`, user);
+    return this._Http.post(`${NAV_URL}/send-otp`, user);
+  }
+
+  sendotp(otp: string): Observable<any> {
+    return this._Http.post(`${NAV_URL}/verify-otp`, otp);
   }
 }
+
