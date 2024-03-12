@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Login } from '../model/login.model';
 
-const NAV_URL = 'http://localhost:8080';
+const NAV_URL = 'http://localhost:8080/api';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +14,11 @@ export class ResetpasswordService {
 
   resetPassword(user :Login): Observable<any> {
     console.log(user)
-    return this._Http.post(`${NAV_URL}/resetpassword`, user);
+    return this._Http.post(`${NAV_URL}/send-otp`, user);
+  }
+
+  sendotp(otp: number): Observable<any> {
+    return this._Http.post(`${NAV_URL}/verify-otp`, otp);
   }
 }
+

@@ -28,4 +28,5 @@ public class RegisterLoginService {
 	public RegisterLogin getUsernameByEmail(String email) {
 		return registerloginrepo.findByEmail(email);
 	}
+	
 }

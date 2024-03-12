@@ -16,7 +16,9 @@ export class ResetpasswordComponent implements OnInit {
   }
   user = new Login();
   confirmPassword='';
-  Otp ='';
+  Otp =-1;
+
+  otpSbmitted = false;
   
   resetPassword(): void {
     if(this.user.password !== this.confirmPassword){
@@ -27,12 +29,23 @@ export class ResetpasswordComponent implements OnInit {
     this._resetpasswordservice.resetPassword(this.user).subscribe(
       (response) => {
         console.log("reset success")
-        this._router.navigate(['/login'])
+        this.otpSbmitted = true;
       },
       (error) => {
         // Handle error (e.g., show error message)
       }
     );
+  }
+
+  sendotp(): void {
+    this._resetpasswordservice.sendotp(this.Otp).subscribe(
+      (response) => {
+
+      },
+      (error) => {
+
+      }
+      );
   }
 
 }
