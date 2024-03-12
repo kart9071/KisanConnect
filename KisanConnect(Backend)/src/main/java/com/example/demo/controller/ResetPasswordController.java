@@ -36,8 +36,9 @@ public class ResetPasswordController {
 	
 	@PostMapping("/api/verify-otp")
 	@CrossOrigin(origins="http://localhost:4200")
-	public void verifyOtp() {
+	public void verifyOtp(@RequestBody int otp) throws Exception{
 		
+		System.out.println("The otp is: "+otp);
 	}
 	
 	public int generateOtp() {
