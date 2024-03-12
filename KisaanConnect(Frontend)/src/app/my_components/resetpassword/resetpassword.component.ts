@@ -16,7 +16,7 @@ export class ResetpasswordComponent implements OnInit {
   }
   user = new Login();
   confirmPassword='';
-  Otp ='';
+  Otp =-1;
 
   otpSbmitted = false;
   
@@ -30,7 +30,6 @@ export class ResetpasswordComponent implements OnInit {
       (response) => {
         console.log("reset success")
         this.otpSbmitted = true;
-        this._router.navigate(['/login'])
       },
       (error) => {
         // Handle error (e.g., show error message)
