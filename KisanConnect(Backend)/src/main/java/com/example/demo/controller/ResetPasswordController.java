@@ -18,6 +18,9 @@ import com.example.demo.model.RegisterLogin;
 import com.example.demo.service.EmailService;
 import com.example.demo.service.RegisterLoginService;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
+
 
 @RestController
 public class ResetPasswordController {
@@ -29,15 +32,19 @@ public class ResetPasswordController {
 	
 	@PostMapping("/api/send-otp")
 	@CrossOrigin(origins="http://localhost:4200")
-	public void  sendOtp(@RequestBody RegisterLogin user) throws Exception{
+	public void  sendOtp(@RequestBody RegisterLogin user,HttpServletRequest httpRequest) throws Exception{
 		int otp=generateOtp();
+		// HttpSession session=httpRequest.getSession();
+		// session.setAttribute("otp", otp);
         sendOtpByEmail(otp,user);
 	}
 	
 	@PostMapping("/api/verify-otp")
 	@CrossOrigin(origins="http://localhost:4200")
-	public void verifyOtp(@RequestBody int otp) throws Exception{
-		
+	public void verifyOtp(@RequestBody int otp,HttpServletRequest httpRequest) throws Exception{
+		// HttpSession session=httpRequest.getSession();
+		// int gmailOtp=(int) session.getAttribute("otp");
+		// System.out.println("The stored otp is: "+gmailOtp);
 		System.out.println("The otp is: "+otp);
 	}
 	
