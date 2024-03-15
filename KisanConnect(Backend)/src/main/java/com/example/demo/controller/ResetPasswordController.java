@@ -15,14 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.model.RegisterLogin;
 import com.example.demo.model.ResetPassword;
 import com.example.demo.service.RegisterLoginService;
-<<<<<<< HEAD
 import com.example.demo.service.ResetPasswordService;
-=======
-
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpSession;
-
->>>>>>> 838914406adcaf9daaaac92b6322c200488d5913
 
 @RestController
 public class ResetPasswordController {
@@ -31,7 +24,6 @@ public class ResetPasswordController {
 
 	@Autowired
 	private RegisterLoginService registerloginservice;
-<<<<<<< HEAD
 
 	@PostMapping("/send-otp")
 	@CrossOrigin(origins = "http://localhost:4200")
@@ -55,16 +47,6 @@ public class ResetPasswordController {
 			System.out.println("Email is not present...");
 			return ResponseEntity.ok().body("{\"status\": \"failure\"}");
 		}
-=======
-	
-	@PostMapping("/api/send-otp")
-	@CrossOrigin(origins="http://localhost:4200")
-	public void  sendOtp(@RequestBody RegisterLogin user,HttpServletRequest httpRequest) throws Exception{
-		int otp=generateOtp();
-		// HttpSession session=httpRequest.getSession();
-		// session.setAttribute("otp", otp);
-        sendOtpByEmail(otp,user);
->>>>>>> 838914406adcaf9daaaac92b6322c200488d5913
 	}
 
 
@@ -75,7 +57,6 @@ public class ResetPasswordController {
 		Integer otp = Integer.parseInt(user.getOtp());
 		Integer storedOtp = resetpasswordservice.getOtp(user.getEmail());
 	
-<<<<<<< HEAD
 		if (otp.equals(storedOtp)) {
 			System.out.println("OTP verified successfully");
 			resetpasswordservice.removeOtp(user.getEmail());
@@ -102,15 +83,6 @@ public class ResetPasswordController {
 			return ResponseEntity.ok().body("{\"status\": \"failure\"}");
 		}
 		
-=======
-	@PostMapping("/api/verify-otp")
-	@CrossOrigin(origins="http://localhost:4200")
-	public void verifyOtp(@RequestBody int otp,HttpServletRequest httpRequest) throws Exception{
-		// HttpSession session=httpRequest.getSession();
-		// int gmailOtp=(int) session.getAttribute("otp");
-		// System.out.println("The stored otp is: "+gmailOtp);
-		System.out.println("The otp is: "+otp);
->>>>>>> 838914406adcaf9daaaac92b6322c200488d5913
 	}
 
 
