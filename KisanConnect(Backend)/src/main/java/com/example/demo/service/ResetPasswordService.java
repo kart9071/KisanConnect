@@ -7,10 +7,13 @@ import org.springframework.stereotype.Service;
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 
 @Service
-public class EmailService {
+public class ResetPasswordService {
 
     @Value("${spring.mail.username}")
     private String fromEmail;
@@ -43,5 +46,21 @@ public class EmailService {
 
         Transport.send(message);
     }
+
+    private final Map<String, Integer> otpMap = new HashMap<>();
+
+    public void storeOtp(String email, Integer otp) {
+        otpMap.put(email, otp);
+    }
+
+    public Integer getOtp(String email) {
+        return otpMap.get(email);
+    }
+    
+    public void removeOtp(String email) {
+        otpMap.remove(email);
+    }
+
+    
 }
 

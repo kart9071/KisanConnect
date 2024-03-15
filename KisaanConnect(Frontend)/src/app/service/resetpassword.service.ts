@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { Login } from '../model/login.model';
+import { Injectable } from '@angular/core';
+import { Resetpassword } from '../model/resetpassword.model';
 
-const NAV_URL = 'http://localhost:8080/api';
+
+const NAV_URL = 'http://localhost:8080';
 
 @Injectable({
   providedIn: 'root'
@@ -12,13 +12,18 @@ export class ResetpasswordService {
 
   constructor(private _Http: HttpClient) { }
 
-  resetPassword(user :Login): Observable<any> {
-    console.log(user)
-    return this._Http.post(`${NAV_URL}/send-otp`, user);
-  }
+  submitEmail(user:Resetpassword) {
+    return this._Http.post<any>(`${NAV_URL}/send-otp`, user);
+}
 
-  sendotp(otp: number): Observable<any> {
-    return this._Http.post(`${NAV_URL}/verify-otp`, otp);
-  }
+submitOtp(user:Resetpassword) {
+  return this._Http.post<any>(`${NAV_URL}/verify-otp`, user);
+}
+
+resetpassword(user:Resetpassword) {
+    return this._Http.post<any>(`${NAV_URL}/submit-NewPassword`, user)
+}
+
+
 }
 

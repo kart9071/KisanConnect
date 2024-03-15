@@ -16,17 +16,14 @@ public class RegisterLoginService {
 		return registerloginrepo.save(user);
 	}
 	
-	public RegisterLogin fetchByUsernameAndPassword(String username, String email)
+	public RegisterLogin fetchByEmailAndPassword(String email, String password)
 	{
-		return registerloginrepo.findByUsernameAndPassword(username, email);
+		return registerloginrepo.findByEmailAndPassword(email, password);
 	}
 	
 	public RegisterLogin fetchUserByEmail(String email)
 	{
 		return registerloginrepo.findByEmail(email);
 	}
-	public RegisterLogin getUsernameByEmail(String email) {
-		return registerloginrepo.findByEmail(email);
-	}
-	
+
 }

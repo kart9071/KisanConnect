@@ -23,7 +23,7 @@ public class RegisterLoginController {
 		if (currEmail != null && !"".equals(currEmail)) {
 
 			if (regloginservice == null) {
-	            throw new Exception("RegisterLoginService is not initialized");
+	            throw new Exception("RegisterLoginService is not initialized");  
 	        }
 
 	        RegisterLogin userObj = regloginservice.fetchUserByEmail(currEmail);
@@ -39,13 +39,13 @@ public class RegisterLoginController {
 	@CrossOrigin(origins = "http://localhost:4200")
 	public RegisterLogin loginUser(@RequestBody RegisterLogin user) throws Exception
 	{
-		String currUsername = user.getUsername();
+		String currEmail = user.getEmail();
 		String currPassword = user.getPassword();
 		
 		RegisterLogin userObj = null;
-		if(currUsername != null && currPassword != null)
+		if(currEmail != null && currPassword != null)
 		{
-			userObj = regloginservice.fetchByUsernameAndPassword(currUsername, currPassword);
+			userObj = regloginservice.fetchByEmailAndPassword(currEmail, currPassword);
 		}
 		if(userObj == null)
 		{

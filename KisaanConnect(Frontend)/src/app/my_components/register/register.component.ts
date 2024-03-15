@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Input, Dropdown, Collapse, initMDB } from 'mdb-ui-kit';
 import { Router } from '@angular/router';
-import { RegisterService } from 'src/app/service/register.service';
+import { Collapse, Dropdown, Input, initMDB } from 'mdb-ui-kit';
+
 import { Register } from 'src/app/model/register.model';
+import { RegisterService } from 'src/app/service/register.service';
 
 @Component({
   selector: 'app-register',
@@ -25,7 +26,6 @@ export class RegisterComponent implements OnInit {
       this._registerService.registeruser(this.user).subscribe(
       data => {
         console.log("Registration Success");
-        sessionStorage.setItem("username",this.user.username);
         this._router.navigate(['/registrationsuccess']);
       },
       error => {

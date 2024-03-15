@@ -5,10 +5,11 @@ import org.springframework.stereotype.Repository;
 
 import com.example.demo.model.RegisterLogin;
 
+
 @Repository
 public interface RegisterLoginRepository extends CrudRepository<RegisterLogin, Integer>{
 
-	RegisterLogin findByUsernameAndPassword(String username, String email);
+	RegisterLogin findByEmailAndPassword(String email, String password);
 	RegisterLogin findByEmail(String email);
 
 }
