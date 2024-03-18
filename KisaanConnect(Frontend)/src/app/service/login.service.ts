@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { map } from "rxjs/operators";
-import { Login } from '../model/login.model'
+import { Register } from '../model/register.model';
 
 const NAV_URL = 'http://localhost:8080';
 
@@ -11,11 +11,9 @@ const NAV_URL = 'http://localhost:8080';
 
 export class LoginService {
 
-  login = new Login();
-
   constructor(private _Http: HttpClient) { }
 
-  public loginuser(login: Login) {
+  public loginuser(login: Register) {
     return this._Http.post<any>(`${NAV_URL}/loginuser`, login).pipe(
       map(
         data => {

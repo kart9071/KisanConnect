@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Resetpassword } from '../model/resetpassword.model';
+import { Register } from '../model/register.model';
 
 
 const NAV_URL = 'http://localhost:8080';
@@ -12,18 +12,17 @@ export class ResetpasswordService {
 
   constructor(private _Http: HttpClient) { }
 
-  submitEmail(user:Resetpassword) {
+  submitEmailORMObile(user: Register) {
     return this._Http.post<any>(`${NAV_URL}/send-otp`, user);
-}
+  }
 
-submitOtp(user:Resetpassword) {
-  return this._Http.post<any>(`${NAV_URL}/verify-otp`, user);
-}
+  submitOtp(user: Register) {
+    return this._Http.post<any>(`${NAV_URL}/verify-otp`, user);
+  }
 
-resetpassword(user:Resetpassword) {
+  resetpassword(user: Register) {
     return this._Http.post<any>(`${NAV_URL}/submit-NewPassword`, user)
-}
-
+  }
 
 }
 
