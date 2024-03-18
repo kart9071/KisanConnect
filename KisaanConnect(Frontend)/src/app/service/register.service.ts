@@ -11,8 +11,6 @@ const NAV_URL = 'http://localhost:8080';
 
 export class RegisterService {
 
-   register = new Register();
-
   constructor(private _Http:HttpClient) { }
 
   public registeruser(register:Register):Observable<any>{

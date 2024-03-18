@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Input, Dropdown, Collapse, initMDB } from 'mdb-ui-kit';
-import { Login } from 'src/app/model/login.model';
+import { Collapse, Dropdown, Input, initMDB } from 'mdb-ui-kit';
+import { Register } from 'src/app/model/register.model';
 import { LoginService } from 'src/app/service/login.service';
 
 @Component({
@@ -14,13 +14,10 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     initMDB({ Input, Dropdown, Collapse });
   }
-  
-  user =new Login();
-  msg = '';
+
+  user =new Register();
 
   constructor(private _loginservice:LoginService, private _router:Router ) { }
-
-  
 
   loginUser()
   {
@@ -37,11 +34,10 @@ export class LoginComponent implements OnInit {
 
           console.log(data);
           console.log("Response Received");
-          
+
         },
         (error: { error: any; }) => {
           console.log(error.error);
-          this.msg="Bad credentials, please enter valid credentials !!!";
         }
       )
   }

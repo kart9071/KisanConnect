@@ -2,8 +2,6 @@ package com.example.demo.controller;
 
 import java.util.Random;
 
-import javax.mail.MessagingException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,11 +25,16 @@ public class ResetPasswordController {
 
 	@PostMapping("/send-otp")
 	@CrossOrigin(origins = "http://localhost:4200")
-	public ResponseEntity<?> sendOtpByEmail(@RequestBody RegisterLogin user) {
+	public ResponseEntity<?> sendOtp(@RequestBody RegisterLogin user) throws Exception {
 		String email = user.getEmail();
-		boolean check = emailPresent(email);
-		if (check) {
-			Integer otp = generateOtp();
+		String mobile = user.getMobile();
+
+		RegisterLogin user1 = registerloginservice.fetchUserByEmail(email);
+		RegisterLogin User2 = registerloginservice.fetchUserByMobile(mobile);
+
+		Integer otp = generateOtp();
+
+		if (user1 != null && user1.getEmail().equals(email)) {
 			String subject = "Thank you for the request to change password. Here is your OTP. Don't send this OTP to anyone.";
 			String body = "YOUR ONE TIME PASSWORD IS " + otp;
 			try {
@@ -39,12 +42,25 @@ public class ResetPasswordController {
 				System.out.println("Email sent successfully!");
 				resetpasswordservice.storeOtp(email, otp);
 				return ResponseEntity.ok().body("{\"status\": \"success\"}");
-			} catch (MessagingException e) {
+			} catch (Exception e) {
 				System.out.println("Failed to send email: " + e.getMessage());
 				return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to send email");
 			}
-		} else {
-			System.out.println("Email is not present...");
+		}
+		else if (User2 != null && User2.getMobile().equals(mobile)) {
+			try {
+				resetpasswordservice.sendSMS(mobile, otp);
+				System.out.println("SMS sent successfully!");
+				resetpasswordservice.storeOtp(mobile, otp);
+				return ResponseEntity.ok().body("{\"status\": \"success\"}");
+			} catch (Exception e) {
+				System.out.println("Failed to send SMS: " + e.getMessage());
+				return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to send SMS");
+			}
+
+		}
+		else {
+			System.out.println("Email/mobile is not present...");
 			return ResponseEntity.ok().body("{\"status\": \"failure\"}");
 		}
 	}
@@ -94,7 +110,7 @@ public class ResetPasswordController {
 		return otp;
 	}
 
-	public boolean emailPresent(String email) {
+	public boolean userPresent(String email) {
 		boolean check;
 		RegisterLogin user = registerloginservice.fetchUserByEmail(email);
 		if (user != null && user.getEmail().equals(email)) {

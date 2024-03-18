@@ -12,14 +12,13 @@ import { RegisterService } from 'src/app/service/register.service';
 })
 export class RegisterComponent implements OnInit {
 
-  user =new Register();
-  msg='';
-
   constructor(private _registerService : RegisterService, private _router : Router) { }
 
   ngOnInit(): void {
     initMDB({ Input, Dropdown, Collapse });
   }
+
+  user =new Register();
 
   registerUser()
   {
@@ -31,7 +30,6 @@ export class RegisterComponent implements OnInit {
       error => {
         console.log("Registration Failed");
         console.log(error.error);
-        this.msg = "User with "+this.user.email+" already exists !!!";
       }
     )
   }

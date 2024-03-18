@@ -26,4 +26,8 @@ public class RegisterLoginService {
 		return registerloginrepo.findByEmail(email);
 	}
 
+	public RegisterLogin fetchUserByMobile(String mobile){
+		return registerloginrepo.findByMobile(mobile);
+	}
+
 }
