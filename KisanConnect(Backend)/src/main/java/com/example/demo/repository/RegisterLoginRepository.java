@@ -12,5 +12,6 @@ public interface RegisterLoginRepository extends CrudRepository<RegisterLogin, I
 	RegisterLogin findByEmailAndPassword(String email, String password);
 	RegisterLogin findByEmail(String email);
     RegisterLogin findByMobile(String mobile);
+    RegisterLogin findByEmailOrMobile(String email, String mobile);
 
 }

@@ -46,8 +46,7 @@ public class ResetPasswordController {
 				System.out.println("Failed to send email: " + e.getMessage());
 				return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to send email");
 			}
-		}
-		else if (User2 != null && User2.getMobile().equals(mobile)) {
+		} else if (User2 != null && User2.getMobile().equals(mobile)) {
 			try {
 				resetpasswordservice.sendSMS(mobile, otp);
 				System.out.println("SMS sent successfully!");
@@ -58,21 +57,25 @@ public class ResetPasswordController {
 				return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to send SMS");
 			}
 
-		}
-		else {
+		} else {
 			System.out.println("Email/mobile is not present...");
 			return ResponseEntity.ok().body("{\"status\": \"failure\"}");
 		}
 	}
 
-
 	@PostMapping("/verify-otp")
 	@CrossOrigin(origins = "http://localhost:4200")
-	public ResponseEntity<?> verifyOtp(@RequestBody  ResetPassword user) {
+	public ResponseEntity<?> verifyOtp(@RequestBody ResetPassword user) {
 
 		Integer otp = Integer.parseInt(user.getOtp());
-		Integer storedOtp = resetpasswordservice.getOtp(user.getEmail());
-	
+		Integer storedOtp;
+		if (user.getEmail() != null && !"".equals(user.getEmail())) {
+			storedOtp = resetpasswordservice.getOtp(user.getEmail());
+		}
+		else{
+			storedOtp = resetpasswordservice.getOtp(user.getMobile());
+		}
+
 		if (otp.equals(storedOtp)) {
 			System.out.println("OTP verified successfully");
 			resetpasswordservice.removeOtp(user.getEmail());
@@ -83,25 +86,21 @@ public class ResetPasswordController {
 		}
 	}
 
-
 	@PostMapping("/submit-NewPassword")
 	@CrossOrigin(origins = "http://localhost:4200")
-	public ResponseEntity<?> resetPassword(@RequestBody ResetPassword user){
-		RegisterLogin userpresnt = registerloginservice.fetchUserByEmail(user.getEmail());
-		if (userpresnt != null && user.getEmail().equals(user.getEmail())) {
+	public ResponseEntity<?> resetPassword(@RequestBody ResetPassword user) {
+		RegisterLogin userpresnt = registerloginservice.fetchUserByEmailOrMobile(user.getEmail(), user.getMobile());
+		if (userpresnt != null &&( user.getEmail().equals(userpresnt.getEmail()) || user.getMobile().equals(userpresnt.getMobile()))) {
 			userpresnt.setPassword(user.getPassword());
 			registerloginservice.saveUser(userpresnt);
 			System.out.println("reset password successfully");
 			return ResponseEntity.ok().body("{\"status\": \"success\"}");
-		}
-		else{
+		} else {
 			System.out.println("cann't reset password");
 			return ResponseEntity.ok().body("{\"status\": \"failure\"}");
 		}
-		
+
 	}
-
-
 
 	public int generateOtp() {
 		Random random = new Random();
@@ -110,14 +109,4 @@ public class ResetPasswordController {
 		return otp;
 	}
 
-	public boolean userPresent(String email) {
-		boolean check;
-		RegisterLogin user = registerloginservice.fetchUserByEmail(email);
-		if (user != null && user.getEmail().equals(email)) {
-			check = true;
-		} else {
-			check = false;
-		}
-		return check;
-	}
 }

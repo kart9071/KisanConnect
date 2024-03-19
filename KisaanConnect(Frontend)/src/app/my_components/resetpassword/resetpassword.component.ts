@@ -30,7 +30,7 @@ export class ResetpasswordComponent implements OnInit {
       this.user.email = this.contact;
       console.log("email entered: " + this.user.email);
     }
-    else if (/^\d{10}$/.test(this.contact)) {
+    else if ( /^\+(?:[0-9] ?){6,14}[0-9]$/.test(this.contact)) {
       this.user.mobile = this.contact;
       console.log("mobile entered: " + this.user.mobile);
     }

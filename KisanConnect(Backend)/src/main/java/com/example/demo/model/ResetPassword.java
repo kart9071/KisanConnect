@@ -2,7 +2,7 @@ package com.example.demo.model;
 
 public class ResetPassword {
     private String email;
-    private Long mobile;
+    private String mobile;
     private String password;
     private String otp;
     
@@ -12,10 +12,10 @@ public class ResetPassword {
     public void setEmail(String email) {
         this.email = email;
     }
-    public Long getMobile() {
+    public String getMobile() {
         return mobile;
     }
-    public void setMobile(Long mobile) {
+    public void setMobile(String mobile) {
         this.mobile = mobile;
     }
     public String getPassword() {
@@ -30,7 +30,7 @@ public class ResetPassword {
     public void setOtp(String otp) {
         this.otp = otp;
     }
-    public ResetPassword(String email, String password, String otp, Long mobile) {
+    public ResetPassword(String email, String password, String otp, String mobile) {
         this.email = email;
         this.mobile = mobile;
         this.password = password;
