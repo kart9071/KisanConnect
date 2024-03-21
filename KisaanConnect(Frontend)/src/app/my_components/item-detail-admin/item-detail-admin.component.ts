@@ -10,7 +10,7 @@ import DataTable from 'datatables.net-dt';
   selector: 'app-item-detail-admin',
   templateUrl: './item-detail-admin.component.html',
   styleUrls: ['./item-detail-admin.component.css']
-})
+}) 
 export class ItemDetailAdminComponent implements OnInit, AfterViewInit {
 
   constructor(private itemdetailService: ItemDetailService) { }
