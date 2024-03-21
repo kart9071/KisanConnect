@@ -13,24 +13,15 @@ with open('hello.jpeg', 'rb') as f:
 limited_base64_encoded_image = base64_encoded_image[:10000]
 
 data = {
-    "id": 122,
-    "name": "banana seed",
+    "id": 127,
+    "name": "seed 2",
     "company": "10.0",
     "var": [
         {
             "product": {
-                "id": 122,
-                "name": "banana seed",
-                "company": "10.0",
-                "image": limited_base64_encoded_image,
-                "content": "Some content about the product",
-                "features": ["feature1", "feature2", "feature3"],
-                "productUsage": "How to use the product",
-                "crops": "Crops where the product can be used",
-                "timeOfApplication": "Time of application",
-                "dosage": "Dosage information"
+                "id": 127 # Set the whole Product object here
             },
-            "variantId": 2,
+            "variantId": 4,
             "variant": "Variant 1",
             "quantity": 200,
             "price": 100.0,
