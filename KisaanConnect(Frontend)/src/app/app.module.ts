@@ -8,6 +8,8 @@ import { RegisterComponent } from './my_components/register/register.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ResetpasswordComponent } from './my_components/resetpassword/resetpassword.component';
+import { ItemDetailAdminComponent } from './my_components/item-detail-admin/item-detail-admin.component';
+import { ItemDetailComponent } from './my_components/item-detail/item-detail.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { ResetpasswordComponent } from './my_components/resetpassword/resetpassw
     HomeComponent,
     LoginComponent,
     RegisterComponent,
-    ResetpasswordComponent
+    ResetpasswordComponent,
+    ItemDetailAdminComponent,
+    ItemDetailComponent
   ],
   imports: [
     BrowserModule,

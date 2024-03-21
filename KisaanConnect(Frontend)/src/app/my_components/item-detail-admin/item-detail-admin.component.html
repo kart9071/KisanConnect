@@ -1,0 +1,87 @@
+<div class="container">
+  <h2 class="text-center mt-4 mb-5 fw-bold display-4">Add Product</h2>
+  <form (ngSubmit)="submitForm()" #productForm="ngForm" action="#" method="post" enctype="multipart/form-data">
+    <div class="mb-3">
+      <label for="productId" class="form-label">Product SLNo:</label>
+      <input type="text" class="form-control" id="productId" name="productId" [(ngModel)]="product.id" required>
+    </div>
+    <div class="mb-3">
+      <label for="productName" class="form-label">Product Name:</label>
+      <input type="text" class="form-control" id="productName" name="productName" [(ngModel)]="product.name" required>
+    </div>
+    <div class="mb-3">
+      <label for="productCompany" class="form-label">Product Company:</label>
+      <input type="text" class="form-control" id="productCompany" name="productCompany" [(ngModel)]="product.company"
+        required>
+    </div>
+    <div class="mb-3">
+      <label for="volume" class="form-label">Volume Variants:</label>
+      <div *ngFor="let variant of product.volumeVariants; let i = index" class="row mb-2 variant-row">
+        <div class="col-4">
+          <input type="text" class="form-control" [(ngModel)]="variant.variant" name="volumeVariants"
+            placeholder="Variant">
+        </div>
+        <div class="col-2">
+          <input type="number" class="form-control" [(ngModel)]="variant.quantity" name="volumeQuantity"
+            placeholder="Quantity">
+        </div>
+        <div class="col-2">
+          <input type="number" class="form-control" [(ngModel)]="variant.price" name="volumePrice" placeholder="Price">
+        </div>
+        <div class="col-2">
+          <input type="number" class="form-control" [(ngModel)]="variant.discount" name="volumeDiscount"
+            placeholder="Discount (%)">
+        </div>
+        <div class="col-2">
+          <button type="button" class="btn btn-danger" (click)="removeVolumeVariant(i)">Remove</button>
+        </div>
+      </div>
+      <button type="button" class="btn volume-btn" (click)="addVolumeVariant()">Add Variant</button>
+    </div>
+
+    <div class="mb-3">
+      <label for="productPicture" class="form-label">Product Picture: </label>
+      <input type="file" class="form-control-file" id="productPicture" name="productPicture" accept="image/*"
+        [(ngModel)]="product.image" required capture="camera">
+    </div>
+
+    <div class="mb-3">
+      <label for="technicalContent" class="form-label">Content:</label>
+      <input type="text" class="form-control" id="technicalContent" name="technicalContent"
+        [(ngModel)]="product.content" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="features" class="form-label">Features:</label>
+      <input type="text" class="form-control" id="features" name="features" [(ngModel)]="newFeature"
+        (keyup.enter)="addFeature()">
+      <button type="button" class="btn feature-btn" (click)="addFeature()">Add Feature</button>
+      <ul>
+        <li *ngFor="let feature of product.features">{{ feature }}</li>
+      </ul>
+    </div>
+
+    <div class="mb-3">
+      <label for="usage" class="form-label">Usage:</label>
+      <input type="text" class="form-control" id="usage" name="usage" [(ngModel)]="product.usage" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="crops" class="form-label">Crops to Use:</label>
+      <input type="text" class="form-control" id="crops" name="crops" [(ngModel)]="product.crops" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="timeOfApplication" class="form-label">Time of Application:</label>
+      <input type="text" class="form-control" id="timeOfApplication" name="timeOfApplication"
+        [(ngModel)]="product.timeOfApplication" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="dosage" class="form-label">Dosage:</label>
+      <input type="text" class="form-control" id="dosage" name="dosage" [(ngModel)]="product.dosage" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
