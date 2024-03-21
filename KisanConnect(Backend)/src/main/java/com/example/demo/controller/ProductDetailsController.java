@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,7 +16,9 @@ public class ProductDetailsController {
     private ProductDetailService productService;
 
     @PostMapping("/products")
+    @CrossOrigin(origins = "http://localhost:4200")
     public ProductDetails createProduct(@RequestBody ProductDetails product) {
+        System.out.println(product);
         return productService.saveProduct(product);
     }
 }

@@ -29,7 +29,7 @@ public class ProductDetails {
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "product_id")
-    private List<ProductVariant> productVarients;
+    private List<ProductVariant> productVariant;
 
     private String image;
 
@@ -74,12 +74,12 @@ public class ProductDetails {
         this.company = company;
     }
 
-    public List<ProductVariant> getproductVarients() {
-        return productVarients;
+    public List<ProductVariant> getproductVariants() {
+        return productVariant;
     }
 
-    public void setproductVarients(List<ProductVariant> productVarients) {
-        this.productVarients = productVarients;
+    public void setproductVariants(List<ProductVariant> productVariant) {
+        this.productVariant = productVariant;
     }
 
     public String getImage() {
@@ -138,13 +138,13 @@ public class ProductDetails {
         this.dosage = dosage;
     }
 
-    public ProductDetails(Long id, String name, String company, List<ProductVariant> productVarients, String image,
+    public ProductDetails(Long id, String name, String company, List<ProductVariant> productVariant, String image,
             String content, List<String> features, String usage, String crops, String timeOfApplication,
             String dosage) {
         this.id = id;
         this.name = name;
         this.company = company;
-        this.productVarients = productVarients;
+        this.productVariant = productVariant;
         this.image = image;
         this.content = content;
         this.features = features;
@@ -160,8 +160,8 @@ public class ProductDetails {
 
     @Override
     public String toString() {
-        return "ProductDetails [id=" + id + ", name=" + name + ", company=" + company + ", productVarients="
-                + productVarients + ", image=" + image + ", content=" + content + ", features=" + features + ", usage="
+        return "ProductDetails [id=" + id + ", name=" + name + ", company=" + company + ", productVariant="
+                + productVariant + ", image=" + image + ", content=" + content + ", features=" + features + ", usage="
                 + usage + ", crops=" + crops + ", timeOfApplication=" + timeOfApplication + ", dosage=" + dosage + "]";
     }
 
