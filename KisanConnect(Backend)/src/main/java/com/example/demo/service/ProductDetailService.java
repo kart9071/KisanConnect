@@ -15,4 +15,8 @@ public class ProductDetailService {
     public ProductDetails saveProduct(ProductDetails product) {
         return productRepository.save(product);
     }
+
+    public Iterable<ProductDetails> getProductDetails(){
+        return productRepository.findAll();
+    }
 }
