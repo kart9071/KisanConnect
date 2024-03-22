@@ -14,34 +14,36 @@
       <input type="text" class="form-control" id="productCompany" name="productCompany" [(ngModel)]="product.company"
         required>
     </div>
-    <div class="mb-3">
-      <label for="volume" class="form-label">Volume Variants:</label>
-      <div *ngFor="let variant of product.productVariants; let i = index" class="row mb-2 variant-row">
-        <div class="col-4">
-          <label *ngIf="i===0" class="form-label">Volume</label>
-          <input type="text" class="form-control" [(ngModel)]="variant.variant" name="volumeVariants"
-            placeholder="Volume">
-        </div>
-        <div class="col-2">
-          <label *ngIf="i===0" class="form-label">Quantity</label>
-          <input type="number" class="form-control" [(ngModel)]="variant.quantity" name="volumeQuantity"
-            placeholder="Quantity">
-        </div>
-        <div class="col-2">
-          <label *ngIf="i===0" class="form-label">Price</label>
-          <input type="number" class="form-control" [(ngModel)]="variant.price" name="volumePrice" placeholder="Price">
-        </div>
-        <div class="col-2">
-          <label *ngIf="i===0" class="form-label">Discount(%)</label>
-          <input type="number" class="form-control" [(ngModel)]="variant.discount" name="volumeDiscount"
-            placeholder="Discount (%)">
-        </div>
-        <div class="col-2">
-          <button type="button" class="btn btn-danger" (click)="removeVolumeVariant(i)">Remove</button>
-        </div>
-      </div>
-      <button type="button" class="btn volume-btn" (click)="addVolumeVariant()">Add Variant</button>
+   <div class="mb-3">
+  <label for="volume" class="form-label">Volume Variants:</label>
+  <div *ngFor="let variant of product.productVariants; let i = index" class="row mb-2 variant-row">
+    <div class="col-4">
+      <label *ngIf="i===0" class="form-label">Volume</label>
+      <input type="text" class="form-control" [(ngModel)]="variant.variant" name="volumeVariants{{i}}"
+        placeholder="Volume">
     </div>
+    <div class="col-2">
+      <label *ngIf="i===0" class="form-label">Quantity</label>
+      <input type="number" class="form-control" [(ngModel)]="variant.quantity" name="volumeQuantity{{i}}"
+        placeholder="Quantity">
+    </div>
+    <div class="col-2">
+      <label *ngIf="i===0" class="form-label">Price</label>
+      <input type="number" class="form-control" [(ngModel)]="variant.price" name="volumePrice{{i}}"
+        placeholder="Price">
+    </div>
+    <div class="col-2">
+      <label *ngIf="i===0" class="form-label">Discount(%)</label>
+      <input type="number" class="form-control" [(ngModel)]="variant.discount" name="volumeDiscount{{i}}"
+        placeholder="Discount (%)">
+    </div>
+    <div class="col-2">
+      <button type="button" class="btn btn-danger" (click)="removeVolumeVariant(i)">Remove</button>
+    </div>
+  </div>
+  <button type="button" class="btn volume-btn" (click)="addVolumeVariant()">Add Variant</button>
+</div>
+
 
     <div class="mb-3">
       <label for="productPicture" class="form-label">Product Picture: </label>
@@ -90,8 +92,6 @@
   </form>
 </div>
 
-
-
 <table id="example" class="display" style="width:100%">
   <thead>
       <tr>
@@ -121,9 +121,7 @@
       <td>{{ product.dosage }}</td>
       <td>{{ product.productVariants[0].variant }}</td>
       <td>{{ product.image }}</td>
-
   </tr>
-
   </tbody>
   <tfoot>
       <tr>
