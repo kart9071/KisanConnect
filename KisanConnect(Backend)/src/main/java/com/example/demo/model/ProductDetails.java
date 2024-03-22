@@ -1,13 +1,13 @@
 package com.example.demo.model;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.CollectionTable;
 import jakarta.persistence.Column;
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Lob;
@@ -19,7 +19,6 @@ import jakarta.persistence.Table;
 public class ProductDetails {
 
     @Id
-    // @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "product_id")
     private Long id;
 
@@ -29,7 +28,8 @@ public class ProductDetails {
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "product_id")
-    private List<ProductVariant> productVariant;
+    @JsonManagedReference
+    private List<ProductVariant> productVariants;
 
     private String image;
 
@@ -74,12 +74,12 @@ public class ProductDetails {
         this.company = company;
     }
 
-    public List<ProductVariant> getproductVariants() {
-        return productVariant;
+    public List<ProductVariant> getProductVariants() {
+        return productVariants;
     }
 
-    public void setproductVariants(List<ProductVariant> productVariant) {
-        this.productVariant = productVariant;
+    public void setProductVariants(List<ProductVariant> productVariants) {
+        this.productVariants = productVariants;
     }
 
     public String getImage() {
@@ -138,13 +138,13 @@ public class ProductDetails {
         this.dosage = dosage;
     }
 
-    public ProductDetails(Long id, String name, String company, List<ProductVariant> productVariant, String image,
+    public ProductDetails(Long id, String name, String company, List<ProductVariant> productVariants, String image,
             String content, List<String> features, String usage, String crops, String timeOfApplication,
             String dosage) {
         this.id = id;
         this.name = name;
         this.company = company;
-        this.productVariant = productVariant;
+        this.productVariants = productVariants;
         this.image = image;
         this.content = content;
         this.features = features;
@@ -161,7 +161,7 @@ public class ProductDetails {
     @Override
     public String toString() {
         return "ProductDetails [id=" + id + ", name=" + name + ", company=" + company + ", productVariant="
-                + productVariant + ", image=" + image + ", content=" + content + ", features=" + features + ", usage="
+                + productVariants + ", image=" + image + ", content=" + content + ", features=" + features + ", usage="
                 + usage + ", crops=" + crops + ", timeOfApplication=" + timeOfApplication + ", dosage=" + dosage + "]";
     }
 

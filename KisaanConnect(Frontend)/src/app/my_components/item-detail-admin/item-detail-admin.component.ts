@@ -12,18 +12,31 @@ export class ItemDetailAdminComponent implements OnInit, AfterViewInit {
 
   constructor(private itemdetailService: ItemDetailService) { }
 
+  displayVariantTable: number | null = null;
+  product = new ItemDetail()
+  newFeature: string = '';
+  productDetails: ItemDetail[] = [];
+
+
   ngOnInit(): void {
-    this.getProductDetails()
+    this.getProductDetails();
   }
 
   ngAfterViewInit(): void {
-    new DataTable('#example', {
-  });
+    new DataTable('#example', {});
+
+    this.productDetails.forEach(product => {
+      new DataTable(`#tablevariant-${product.id}`, {});
+    });
   }
 
-
-  product = new ItemDetail()
-  newFeature: string = '';
+  toggleVariantTable(productId: number): void {
+    if (this.displayVariantTable === productId) {
+      this.displayVariantTable = null;
+    } else {
+      this.displayVariantTable = productId;
+    }
+  }
 
   submitForm() {
     console.log(this.product);
@@ -52,7 +65,6 @@ export class ItemDetailAdminComponent implements OnInit, AfterViewInit {
     }
   }
 
-  productDetails: ItemDetail[] = [];
   getProductDetails() {
     this.itemdetailService.getProductDetails().subscribe(
       (data:ItemDetail[]) => {
