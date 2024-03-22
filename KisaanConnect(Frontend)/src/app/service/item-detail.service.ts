@@ -13,10 +13,14 @@ const NAV_URL = 'http://localhost:8080';
 
 export class ItemDetailService {
 
-  constructor(private _HttpClient: HttpClient) {}
+  constructor(private _Http: HttpClient) {}
 
   sendProductDetail(product: ItemDetail):Observable<any>{
     console.log(product);
-    return this._HttpClient.post(`${NAV_URL}/products`, product);
+    return this._Http.post(`${NAV_URL}/products`, product);
+  }
+
+  getProductDetails():Observable<any>{
+    return this._Http.get(`${NAV_URL}/products/details`);
   }
 }
