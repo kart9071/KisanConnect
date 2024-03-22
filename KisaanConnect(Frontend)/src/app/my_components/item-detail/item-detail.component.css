@@ -1,37 +1,34 @@
-/* Style for the container div */
-div {
-  margin-bottom: 20px; /* Adds some space between each section */
+/* page 1 */
+/* div {
+  margin-bottom: 20px; 
 }
 
-/* Style for headings */
 h1 {
-  color: #333; /* Dark gray color */
+  color: #333; 
   font-size: 24px;
   margin-bottom: 10px;
 }
 
 h2 {
-  color: #555; /* Medium gray color */
+  color: #555;
   font-size: 20px;
   margin-bottom: 5px;
 }
 
 h3 {
-  color: #777; /* Light gray color */
+  color: #777; 
   font-size: 16px;
   margin-bottom: 5px;
 }
 
-/* Style for paragraphs */
 p {
   font-size: 16px;
   line-height: 1.5;
 }
 
-/* Style for list items */
 ul {
-  list-style-type: disc; /* Use bullets for list items */
-  margin-left: 20px; /* Indent list items */
+  list-style-type: disc; 
+  margin-left: 20px; 
 }
 
 li {
@@ -39,8 +36,375 @@ li {
   line-height: 1.5;
 }
 
-/* Example of specific styling for dosage */
 #dosage {
   font-weight: bold;
-  color: #008000; /* Green color */
+  color: #008000; 
+}
+ */
+
+
+
+ /* page 2 */
+
+.frame-child,
+.frame-item {
+  position: absolute;
+  top: 42px;
+  left: 65px;
+  background-color: #d9d9d9;
+  width: 472px;
+  height: 741px;
+}
+
+
+.frame-item {
+  left: 552px;
+  background-color: #fafafa;
+  width: 815px;
+}
+
+
+.saved-price-42 {
+  position: absolute;
+  top: 197px;
+  left: 588px;
+  font-size: 15px;
+}
+.frame-inner {
+  position: absolute;
+  top: 110px;
+  left: 559px;
+  width: 23px;
+  height: 23px;
+}
+.frame-child1,
+.frame-child2,
+.frame-child3,
+.star-icon {
+  position: absolute;
+  top: 110px;
+  left: 607px;
+  width: 23px;
+  height: 23px;
+}
+.frame-child1,
+.frame-child2,
+.frame-child3 {
+  left: 630px;
+}
+.frame-child2,
+.frame-child3 {
+  left: 652px;
+}
+.frame-child3 {
+  left: 584px;
+}
+.namdhari {
+  position: absolute;
+  top: 75px;
+  left: 561px;
+  font-size: 15px;
+}
+.frame-child4,
+.rectangle-div {
+  position: absolute;
+  top: 876px;
+  left: 65px;
+  width: 1338px;
+  height: 98px;
+}
+.frame-child4 {
+  top: 129px;
+  left: 175px;
+  background-color: #000;
+  width: 253px;
+  height: 328px;
+}
+.surabhi-coriander {
+  position: absolute;
+  top: 49px;
+  left: 561px;
+  font-size: 20px;
+  display: inline-block;
+  width: 233px;
+  height: 40px;
+}
+.frame-child5 {
+  position: absolute;
+  top: 110px;
+  left: 698px;
+  background-color: #0f0c0c;
+  width: 22px;
+  height: 23px;
+}
+.div {
+  position: absolute;
+  top: 115px;
+  left: 701px;
+  font-size: 10px;
+  color: #fff;
+}
+.div1,
+.price,
+.reviews {
+  position: absolute;
+  display: inline-block;
+}
+.reviews {
+  top: 115px;
+  left: 728px;
+  font-size: 7px;
+  color: #126f10;
+  width: 72px;
+  height: 15px;
+}
+.div1,
+.price {
+  top: 163px;
+  left: 561px;
+  font-size: 10px;
+  width: 27px;
+  height: 16px;
+}
+.div1 {
+  top: 156px;
+  left: 596px;
+  font-size: 20px;
+  width: 62px;
+  height: 34px;
+}
+.p {
+  margin: 0;
+}
+.div2,
+.frame-child6 {
+  position: absolute;
+  height: 15px;
+}
+.div2 {
+  top: 163px;
+  left: 652px;
+  font-size: 10px;
+  display: inline-block;
+  width: 30px;
+}
+.frame-child6 {
+  top: 162px;
+  left: 690px;
+  background-color: #de6b18;
+  width: 45px;
+}
+.off {
+  position: absolute;
+  top: 163px;
+  left: 692px;
+  font-size: 10px;
+  color: #ffe3e3;
+}
+.frame-child7 {
+  position: absolute;
+  top: 219px;
+  left: 559px;
+  background-color: #f4f4f4;
+  width: 313px;
+  height: 92px;
+}
+.corriander-icon,
+.size {
+  position: absolute;
+  left: 561px;
+}
+.size {
+  top: 322px;
+  font-size: 15px;
+}
+.corriander-icon {
+  top: 229px;
+  width: 288px;
+  height: 72px;
+  object-fit: cover;
+}
+.gms,
+.variants {
+  position: absolute;
+  font-size: 15px;
+}
+.gms {
+  top: 322px;
+  left: 608px;
+  display: inline-block;
+  width: 74px;
+}
+.variants {
+  top: 372px;
+  left: 559px;
+}
+.frame-child8,
+.frame-child9 {
+  position: absolute;
+  top: 390px;
+  left: 559px;
+  width: 560px;
+  height: 192px;
+}
+.frame-child9 {
+  top: 405px;
+  left: 574px;
+  width: 115px;
+  height: 36px;
+}
+.gms1 {
+  position: absolute;
+  top: 413px;
+  left: 596px;
+  display: inline-block;
+  width: 70px;
+  height: 19px;
+}
+.frame-child10 {
+  position: absolute;
+  top: 405px;
+  left: 704px;
+  width: 242px;
+  height: 36px;
+}
+.frame-child11,
+.gmspack-of-500 {
+  position: absolute;
+  top: 413px;
+  left: 728px;
+}
+.frame-child11 {
+  top: 467px;
+  left: 574px;
+  width: 238px;
+  height: 36px;
+}
+.frame-child12,
+.gms-pack-of {
+  position: absolute;
+  top: 477px;
+  left: 596px;
+}
+.frame-child12 {
+  top: 467px;
+  left: 831px;
+  width: 256px;
+  height: 36px;
+}
+.frame-child13,
+.gms-pack-of1 {
+  position: absolute;
+  top: 478px;
+  left: 886px;
+}
+.frame-child13 {
+  top: 535px;
+  left: 574px;
+  width: 105px;
+  height: 36px;
+}
+.gms2 {
+  position: absolute;
+  top: 548px;
+  left: 596px;
+  font-size: 15px;
+}
+.frame-child14 {
+  position: absolute;
+  top: 617px;
+  left: 559px;
+  background-color: #ff0;
+  width: 205px;
+  height: 120px;
+}
+.ellipse-icon {
+  position: absolute;
+  top: 201px;
+  left: 565px;
+  width: 13px;
+  height: 13px;
+}
+.frame-child15,
+.frame-child16,
+.frame-child17,
+.frame-child18 {
+  position: absolute;
+  top: 640px;
+  left: 572px;
+  width: 10px;
+  height: 10px;
+}
+.frame-child16,
+.frame-child17,
+.frame-child18 {
+  top: 667px;
+}
+.frame-child17,
+.frame-child18 {
+  top: 692px;
+}
+.frame-child18 {
+  top: 635px;
+  left: 66px;
+  background-color: #00f;
+  width: 471px;
+  height: 148px;
+}
+.frame-child19,
+.frame-child20 {
+  position: absolute;
+  top: 677px;
+  left: 66px;
+  background-color: #d9d9d9;
+  width: 96px;
+  height: 79px;
+}
+.frame-child20 {
+  left: 187px;
+}
+.frame-child21,
+.secure-payments {
+  position: absolute;
+  top: 664px;
+  left: 592px;
+}
+.frame-child21 {
+  top: 677px;
+  left: 309px;
+  background-color: #d9d9d9;
+  width: 96px;
+  height: 79px;
+}
+.country-of-origin,
+.in-stock-ready {
+  position: absolute;
+  top: 687px;
+  left: 592px;
+}
+.country-of-origin {
+  top: 637px;
+}
+.rectangle-parent {
+  width: 100%;
+  position: relative;
+  background-color: #fff;
+  height: 1024px;
+  overflow: hidden;
+  text-align: left;
+  font-size: 13px;
+  color: #000;
+  font-family: Inter;
+}
+body {
+  margin: 0;
+  line-height: normal;
+}
+
+.frame-child9:hover,
+.frame-child10:hover,
+.frame-child11:hover,
+.frame-child12:hover,
+.frame-child13:hover {
+  background-color: green;
 }
