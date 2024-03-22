@@ -93,7 +93,7 @@
 </div>
 
 
-
+<!--
 <table id="example" class="display" style="width:100%">
   <thead>
       <tr>
@@ -140,4 +140,65 @@
         <th>Images</th>
       </tr>
   </tfoot>
+</table> -->
+
+
+
+<table id="example" class="display cell-border" style="width:100%">
+  <thead>
+    <tr>
+      <th>Product ID</th>
+      <th>Product Name</th>
+      <th>Company</th>
+      <th>Content</th>
+      <th>Features</th>
+      <th>Usage</th>
+      <th>Crops</th>
+      <th>Time of Application</th>
+      <th>Dosage</th>
+      <th>Product Variant</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of productDetails">
+      <td>{{ product.id }}</td>
+      <td>{{ product.name }}</td>
+      <td>{{ product.company }}</td>
+      <td>{{ product.content }}</td>
+      <td>
+        <ul>
+          <li *ngFor="let feature of product.features">{{ feature }}</li>
+        </ul>
+      </td>
+      <td>{{ product.usage }}</td>
+      <td>{{ product.crops }}</td>
+      <td>{{ product.timeOfApplication }}</td>
+      <td>{{ product.dosage }}</td>
+      <td>
+        <button (click)="toggleVariantTable(+product.id)">Toggle Variant</button>
+      </td>
+    </tr>
+  </tbody>
 </table>
+
+<div *ngFor="let product of productDetails">
+  <h3 *ngIf="displayVariantTable === +product.id">Product Variant for {{ product.name }}</h3>
+  <table *ngIf="displayVariantTable === +product.id" id="tablevariant{{product.id}}" class="display cell-border" style="width:50%">
+    <thead>
+      <tr>
+        <th>Variant</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Discount</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let variant of product.productVariants">
+        <td>{{ variant.variant }}</td>
+        <td>{{ variant.quantity }}</td>
+        <td>{{ variant.price }}</td>
+        <td>{{ variant.discount }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

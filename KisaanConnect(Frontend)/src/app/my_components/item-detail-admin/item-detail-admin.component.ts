@@ -26,7 +26,7 @@ export class ItemDetailAdminComponent implements OnInit, AfterViewInit {
     new DataTable('#example', {});
 
     this.productDetails.forEach(product => {
-      new DataTable(`#tablevariant-${product.id}`, {});
+      new DataTable(`#tablevariant${product.id}`, {});
     });
   }
 
