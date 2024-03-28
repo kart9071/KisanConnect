@@ -144,7 +144,7 @@
 
 
 
-<table id="example" class="display cell-border" style="width:100%">
+<table id="example" class="table table-bordered" style="width:100%">
   <thead>
     <tr>
       <th>Product ID</th>
@@ -183,8 +183,8 @@
 
 <div *ngFor="let product of productDetails">
   <h3 *ngIf="displayVariantTable === +product.id">Product Variant for {{ product.name }}</h3>
-  <table *ngIf="displayVariantTable === +product.id" id="tablevariant{{product.id}}" class="display cell-border" style="width:50%">
-    <thead>
+  <table  class="table table-success table-striped-columns" *ngIf="displayVariantTable === +product.id" id="tablevariant{{product.id}}"  style="width:100%">
+    <thead >
       <tr>
         <th>Variant</th>
         <th>Quantity</th>
