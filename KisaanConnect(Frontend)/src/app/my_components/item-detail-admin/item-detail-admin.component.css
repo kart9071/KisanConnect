@@ -89,44 +89,9 @@
   text-align: center;
 }
 
-td#variant{
-  padding:10px;
-  
-  border: 2px solid black;;
-  /* background-color: yellow; */
-  color: black;
-  text-align: center;
-}
-
 #toggle_button{
   width: 100px;
   height: 40px;
   border: 4px solid blue;
   border-radius: 10px;
-}
-th#variant{
-  padding: 5px;
-  border-radius: 5px;
-  border: 2px solid black;
-  color: black;
-  text-align: center;
-}
-
-td#product{
-  padding:10px;
-  
-  border: 2px solid black;;
-  /* background-color: yellow; */
-  color: black;
-  text-align: center;
-  font-family: 'Times New Roman', Times, serif;
-}
-
-th#product{
-  padding: 5px;
-  border-radius: 5px;
-  border: 2px solid black;
-  color: black;
-  font-family: 'Times New Roman', Times, serif;
-  text-align: center;
 }

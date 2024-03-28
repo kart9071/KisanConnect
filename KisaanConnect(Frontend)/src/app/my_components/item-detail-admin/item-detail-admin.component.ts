@@ -1,7 +1,9 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { ItemDetail } from 'src/app/model/item-detail.model';
 import { ItemDetailService } from 'src/app/service/item-detail.service';
-import DataTable from 'datatables.net-dt';
+import $ from 'jquery';
+import 'datatables.net';
+
 
 @Component({
   selector: 'app-item-detail-admin',
@@ -23,10 +25,10 @@ export class ItemDetailAdminComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    new DataTable('#example', {});
-
-    this.productDetails.forEach(product => {
-      new DataTable(`#tablevariant${product.id}`, {});
+    $(document).ready(() => {
+      $('#example').DataTable({
+      
+      });
     });
   }
 
@@ -76,7 +78,6 @@ export class ItemDetailAdminComponent implements OnInit, AfterViewInit {
     this.itemdetailService.getProductDetails().subscribe(
       (data:ItemDetail[]) => {
         console.log(data);
-
         this.productDetails = data;
       },
       (error: any) => {
@@ -85,3 +86,5 @@ export class ItemDetailAdminComponent implements OnInit, AfterViewInit {
     )
   }
 }
+
+

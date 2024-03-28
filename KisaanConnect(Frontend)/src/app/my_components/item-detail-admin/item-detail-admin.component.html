@@ -93,58 +93,7 @@
 </div>
 
 
-<!--
-<table id="example" class="display" style="width:100%">
-  <thead>
-      <tr>
-          <th>Product Id</th>
-          <th>Product Name</th>
-          <th>Product Company</th>
-          <th>Content</th>
-          <th>Feature</th>
-          <th>Usage</th>
-          <th>Crops to use</th>
-          <th>Time of Application</th>
-          <th>Dosage</th>
-          <th>Product Variant</th>
-          <th>Images</th>
-      </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let product of productDetails">
-      <td>{{ product.id }}</td>
-      <td>{{ product.name }}</td>
-      <td>{{ product.company }}</td>
-      <td>{{ product.content }}</td>
-      <td>{{ product.features }}</td>
-      <td>{{ product.usage }}</td>
-      <td>{{ product.crops }}</td>
-      <td>{{ product.timeOfApplication }}</td>
-      <td>{{ product.dosage }}</td>
-      <td>{{ product.productVariants[0].variant }}</td>
-      <td>{{ product.image }}</td>
-  </tr>
-  </tbody>
-  <tfoot>
-      <tr>
-        <th>Product Id</th>
-        <th>Product Name</th>
-        <th>Product Company</th>
-        <th>Content</th>
-        <th>Feature</th>
-        <th>Usage</th>
-        <th>Crops to use</th>
-        <th>Time of Application</th>
-        <th>Dosage</th>
-        <th>Product Variant</th>
-        <th>Images</th>
-      </tr>
-  </tfoot>
-</table> -->
-
-
-
-<table id="example" class="table mx-auto" style="width:75%">
+<table id="example" class="table-sm mx-auto table-bordered text-center" style="width:100%">
   <thead>
     <tr>
       <th id="product">Product ID</th>
@@ -181,9 +130,10 @@
   </tbody>
 </table>
 
+
 <div *ngFor="let product of productDetails">
-  <h3 *ngIf="displayVariantTable === +product.id">Product Variant for {{ product.name }}</h3>
-  <table  class="table mx-auto" *ngIf="displayVariantTable === +product.id" id="tablevariant{{product.id}}"  style="width:65%;">
+  <h3 class="text-center" *ngIf="displayVariantTable === +product.id">Product Variant for {{ product.name }}</h3>
+  <table  class="table-sm mx-auto my-5 table-bordered" *ngIf="displayVariantTable === +product.id" id="tablevariant{{product.id}}"  style="width:50%;">
     <thead >
       <tr>
         <th id="variant">Variant</th>
