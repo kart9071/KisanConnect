@@ -144,38 +144,38 @@
 
 
 
-<table id="example" class="table table-bordered" style="width:100%">
+<table id="example" class="table mx-auto" style="width:75%">
   <thead>
     <tr>
-      <th>Product ID</th>
-      <th>Product Name</th>
-      <th>Company</th>
-      <th>Content</th>
-      <th>Features</th>
-      <th>Usage</th>
-      <th>Crops</th>
-      <th>Time of Application</th>
-      <th>Dosage</th>
-      <th>Product Variant</th>
+      <th id="product">Product ID</th>
+      <th id="product">Product Name</th>
+      <th id="product">Company</th>
+      <th id="product">Content</th>
+      <th id="product">Features</th>
+      <th id="product">Usage</th>
+      <th id="product">Crops</th>
+      <th id="product">Time of Application</th>
+      <th id="product">Dosage</th>
+      <th id="product">Product Variant</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let product of productDetails">
-      <td>{{ product.id }}</td>
-      <td>{{ product.name }}</td>
-      <td>{{ product.company }}</td>
-      <td>{{ product.content }}</td>
-      <td>
-        <ul>
+      <td id="product">{{ product.id }}</td>
+      <td id="product">{{ product.name }}</td>
+      <td id="product">{{ product.company }}</td>
+      <td id="product">{{ product.content }}</td>
+      <td id="product">
+        <ul id="">
           <li *ngFor="let feature of product.features">{{ feature }}</li>
         </ul>
       </td>
-      <td>{{ product.usage }}</td>
-      <td>{{ product.crops }}</td>
-      <td>{{ product.timeOfApplication }}</td>
-      <td>{{ product.dosage }}</td>
-      <td>
-        <button (click)="toggleVariantTable(+product.id)">Toggle Variant</button>
+      <td id="product">{{ product.usage }}</td>
+      <td id="product">{{ product.crops }}</td>
+      <td id="product">{{ product.timeOfApplication }}</td>
+      <td id="product">{{ product.dosage }}</td>
+      <td id="product">
+        <button (click)="toggleVariantTable(+product.id)" id="toggle_button">Toggle</button>
       </td>
     </tr>
   </tbody>
@@ -183,22 +183,23 @@
 
 <div *ngFor="let product of productDetails">
   <h3 *ngIf="displayVariantTable === +product.id">Product Variant for {{ product.name }}</h3>
-  <table  class="table table-success table-striped-columns" *ngIf="displayVariantTable === +product.id" id="tablevariant{{product.id}}"  style="width:100%">
+  <table  class="table mx-auto" *ngIf="displayVariantTable === +product.id" id="tablevariant{{product.id}}"  style="width:65%;">
     <thead >
       <tr>
-        <th>Variant</th>
-        <th>Quantity</th>
-        <th>Price</th>
-        <th>Discount</th>
+        <th id="variant">Variant</th>
+        <th id="variant">Quantity</th>
+        <th id="variant">Price</th>
+        <th id="variant">Discount</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let variant of product.productVariants">
-        <td>{{ variant.variant }}</td>
-        <td>{{ variant.quantity }}</td>
-        <td>{{ variant.price }}</td>
-        <td>{{ variant.discount }}</td>
+        <td id="variant">{{ variant.variant }}</td>
+        <td id="variant">{{ variant.quantity }}</td>
+        <td id="variant">{{ variant.price }}</td>
+        <td id="variant">{{ variant.discount }}</td>
       </tr>
     </tbody>
   </table>
 </div>
+

@@ -35,6 +35,13 @@ export class ItemDetailAdminComponent implements OnInit, AfterViewInit {
       this.displayVariantTable = null;
     } else {
       this.displayVariantTable = productId;
+      setTimeout(() => {
+        const tableId = 'tablevariant' + productId;
+        const table = document.getElementById(tableId);
+        if (table) {
+          table.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
     }
   }
 
